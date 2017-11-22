@@ -7,20 +7,20 @@ import pprint
 
 
 class GroupArticle:
-    api_url = 'http://127.0.0.1:88/api/articles/50'
+    api_url = 'http://170.240.100.31:88/api/articles/3'
 
     def __init__(self):
         pass
 
     @staticmethod
     def _get_tags(sentence):
-        return jieba.analyse.extract_tags(sentence, topK=10)
+        # return jieba.analyse.extract_tags(sentence, topK=10)
         punct = set(u''':!),.:;?]}¢'"、。〉》」』】〕〗〞︰︱︳﹐､﹒
         ﹔﹕﹖﹗﹚﹜﹞！），．：；？｜｝︴︶︸︺︼︾﹀﹂﹄﹏､～￠
         々‖•·ˇˉ―--′’”([{£¥'"‵〈《「『【〔〖（［｛￡￥〝︵︷︹︻
         ︽︿﹁﹃﹙﹛﹝（｛“‘-—_…''')
         tags = jieba.cut(sentence)
-        return [tag for tag in tags if tag not in punct and not tag.isdigit()]
+        return [tag for tag in tags if tag not in punct and not tag.isdigit()][:10]
 
     def _get_remote_contents(self):
         return requests.get(self.api_url).json()

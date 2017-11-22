@@ -1,5 +1,6 @@
-import pprint
 from math import sqrt
+from pprint import pprint
+from random import random
 
 import requests
 
@@ -86,13 +87,3 @@ class DistancesStore:
         self.distance = distance
 
 
-distances = {}
-# 计算相互之间的距离
-
-users = list(content.keys())
-
-for i in range(len(users)):
-    for j in range(i + 1, len(users)):
-        distances[(users[i], users[j])] = sim_person(content, users[i], users[j])
-
-print(distances)
